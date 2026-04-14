@@ -2,25 +2,39 @@
    WEDDING INVITATION - COMPLETE STYLESHEET
    ============================================= */
 
+@font-face {
+  font-family: 'UVN Hoa Tay';
+  src: url('https://w.ladicdn.com/6322a62f2dad980013bb5005/uvnhoatay1-20250703082157-fl9kv.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Vip Hastegi';
+  src: url('https://w.ladicdn.com/6322a62f2dad980013bb5005/1ftv-vip-hastegi-20250323075635-ymzdv.otf') format('opentype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --olive: #515D3E;
-  --olive-light: #6B7A5E;
-  --olive-dark: #3A4230;
-  --olive-muted: #8B9A7A;
-  --cream: #FDFCF8;
-  --cream-dark: #F5F0E8;
-  --paper: #F8F4ED;
-  --gold: #B8A88A;
+  --olive: rgb(82, 97, 62);
+  --olive-light: #7B8A6E;
+  --olive-dark: #3F4A34;
+  --olive-muted: #9BAA8A;
+  --cream: #FFFEFA;
+  --cream-dark: #F7F3EB;
+  --paper: #FAF7F2;
+  --gold: #C5B358;
   --gold-light: #D4C5A9;
-  --text: #4A4A3F;
-  --text-light: #7A7A6F;
-  --text-muted: #A0A095;
+  --text: #3D3D35;
+  --text-light: #6D6D62;
+  --text-muted: #9E9E92;
   --white: #FFFFFF;
-  --overlay: rgba(0, 0, 0, 0.55);
-  --font-script: 'Great Vibes', cursive;
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Inter', sans-serif;
-  --max-w: 520px;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --font-script: 'UVN Hoa Tay', cursive;
+  --font-title: 'Vip Hastegi', cursive;
+  --font-serif: 'Playfair Display', serif;
+  --font-accent: 'Open Sans', sans-serif;
+  --font-sans: 'Open Sans', sans-serif;
+  --max-w: 420px;
 }
 
 *,
@@ -40,7 +54,7 @@ body {
   font-size: 15px;
   line-height: 1.6;
   color: var(--text);
-  background: #D6D2CC;
+  background: #cdccc6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -72,13 +86,14 @@ a {
 
 /* ---- App Shell ---- */
 .app-wrapper {
+  width: 100%;
   max-width: var(--max-w);
-  margin: 0 auto;
-  background: var(--cream);
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 80px rgba(0, 0, 0, 0.18);
+  background-color: #f7f3ed;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
 }
 
 .main-content {
@@ -118,15 +133,17 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: var(--cream);
-  background-image:
-    radial-gradient(circle at 25% 25%, rgba(200, 190, 170, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(200, 190, 170, 0.06) 0%, transparent 50%);
-  padding: 40px 24px;
-  position: relative;
+  /* position: relative; */ /* Removed to ensure proper stacking if needed, but let's keep it if children are absolute */
+  background-color: #f7f3ed;
+  background-image: url("https://w.ladicdn.com/s750x1000/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0033_1-20251010160355-v6bgi.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
   z-index: 10;
   overflow: hidden;
+  padding-top: 147px;
 }
 
 /* Floating particles */
@@ -208,149 +225,95 @@ a {
 
 /* Title */
 .ec-title {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: var(--olive-dark);
+  font-family: "Open Sans";
+  font-size: 18.33px;
+  color: rgb(82, 97, 62);
   text-transform: uppercase;
-  margin-bottom: 6px;
+  text-align: center;
+  letter-spacing: normal;
+  margin-bottom: 0;
+  line-height: 1.2;
 }
 
 /* Guest name - elegant script */
 .ec-guest {
-  font-family: var(--font-script);
-  font-size: 32px;
-  color: var(--olive);
-  min-height: 40px;
+  font-family: "UVN Hoa Tay";
+  font-size: 35.57px;
+  color: rgb(82, 97, 62);
+  text-align: center;
+  margin-top: 10px;
   margin-bottom: 0;
+  line-height: 1.2;
 }
 
 /* Divider line */
 .ec-line {
-  width: 260px;
-  height: 1.5px;
-  background: linear-gradient(90deg, transparent, var(--olive-dark), transparent);
-  margin: 12px auto 28px;
-  transform-origin: center;
+  width: 338px;
+  height: 1px;
+  background: rgb(82, 97, 62);
+  margin: 15px auto 0;
+  opacity: 0.5;
 }
 
 /* Envelope wrapper */
 .ec-envelope-wrap {
   position: relative;
-  width: 320px;
-  height: 280px;
-  margin: 0 auto 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 600px; /* Large enough to contain all absolute elements */
+  margin: 0 auto;
 }
 
 /* Floral images */
 .ec-floral {
   position: absolute;
   pointer-events: none;
-  z-index: 6;
-  mix-blend-mode: multiply;
+  z-index: 10;
 }
 
 .ec-floral-tl {
-  width: 150px;
-  top: -30px;
-  left: -40px;
+  width: 101px;
+  height: 186px;
+  top: 217px;
+  left: 36px;
 }
 
 .ec-floral-br {
-  width: 160px;
-  bottom: -30px;
-  right: -40px;
+  width: 152px;
+  height: 302px;
+  top: 331px;
+  left: 254px;
 }
 
 /* Envelope CSS */
 .ec-envelope {
-  position: relative;
-  width: 280px;
-  height: 190px;
-}
-
-.ec-envelope__body {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  background: linear-gradient(160deg, #EAE2D2 0%, #DDD5C4 50%, #D5CDB8 100%);
-  border-radius: 3px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.10),
-    0 2px 8px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  width: 285.2px;
+  height: 200.8px;
+  top: 279px;
+  left: 67px;
+  background-image: url("https://w.ladicdn.com/s600x550/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0031_3-20251010171938-1el86.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.ec-envelope__flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 110px;
-  overflow: hidden;
-  transform-origin: top center;
-}
-
-.ec-envelope__flap::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 198px;
-  height: 198px;
-  background: linear-gradient(160deg, #E8E0D0 0%, #D8D0BF 100%);
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-/* Fold lines on envelope body */
+/* Removed CSS envelope parts as we're using image */
+.ec-envelope__body,
+.ec-envelope__flap,
 .ec-envelope__flap-line-l,
 .ec-envelope__flap-line-r {
-  position: absolute;
-  bottom: 0;
-  width: 1px;
-  height: 150px;
-  z-index: 1;
-  opacity: 0.12;
-}
-
-.ec-envelope__flap-line-l {
-  left: 0;
-  background: linear-gradient(to top, transparent, var(--olive-dark));
-  transform: rotate(-25deg);
-  transform-origin: bottom left;
-}
-
-.ec-envelope__flap-line-r {
-  right: 0;
-  background: linear-gradient(to top, transparent, var(--olive-dark));
-  transform: rotate(25deg);
-  transform-origin: bottom right;
+  display: none;
 }
 
 /* Wax Seal (real image) */
 .ec-seal {
   position: absolute;
-  width: 80px;
-  height: 80px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 7;
-  border-radius: 50%;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
-  object-fit: contain;
+  width: 71.3px;
+  height: 71.3px;
+  top: 346px;
+  left: 174px;
+  z-index: 11;
   cursor: pointer;
   transition: transform 0.2s ease;
-  mix-blend-mode: multiply;
 }
 
 .ec-seal:hover {
@@ -359,22 +322,26 @@ a {
 
 /* Date */
 .ec-date {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  font-weight: 300;
-  color: var(--olive);
-  letter-spacing: 0.18em;
+  font-family: "Vip Hastegi";
+  font-size: 34.38px;
+  color: rgb(82, 97, 62);
+  letter-spacing: 3px;
+  text-align: center;
+  margin-top: 520px; /* Positioned relative to the envelope wrap */
+  line-height: 1.2;
 }
 
 /* Hint */
 .ec-hint {
-  margin-top: 20px;
-  font-size: 12px;
-  color: var(--text-muted);
+  margin-top: 40px;
+  font-family: "Open Sans";
+  font-size: 13.75px;
+  color: rgb(139, 137, 126);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  padding-bottom: 50px;
 }
 
 .ec-hint__icon {
@@ -404,11 +371,14 @@ a {
 }
 
 .hero-section__title {
-  font-family: var(--font-script);
-  font-size: 52px;
-  color: var(--olive);
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 700;
+  color: #4A5D4A;
   line-height: 1.2;
   margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .hero-envelope {
@@ -473,12 +443,12 @@ a {
 
 .family-side__label {
   font-family: var(--font-serif);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--olive);
+  font-size: 16px;
+  font-weight: 700;
+  color: #4A5D4A;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .family-side__parent {
@@ -509,20 +479,21 @@ a {
 .couple-names__groom,
 .couple-names__bride {
   font-family: var(--font-serif);
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 700;
-  color: var(--olive-dark);
+  color: #4A5D4A;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  line-height: 1.1;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
 }
 
 .couple-names__and {
-  font-family: var(--font-script);
-  font-size: 48px;
-  color: var(--olive);
+  font-family: var(--font-title);
+  font-size: 56px;
+  color: var(--gold);
   display: block;
-  margin: 4px 0;
+  margin: -5px 0;
+  font-weight: normal;
 }
 
 /* ===========================================
@@ -533,14 +504,14 @@ a {
 }
 
 .event-card {
-  background: linear-gradient(160deg, var(--olive) 0%, var(--olive-dark) 100%);
-  border-radius: 12px;
-  padding: 32px 24px;
-  color: var(--cream);
-  margin-bottom: 20px;
+  background: #fbf9f6;
+  border: 1px solid #e8e0d0;
+  border-radius: 0;
+  padding: 40px 24px;
+  color: #4A5D4A;
+  margin-bottom: 32px;
   text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
 .event-card::before {
@@ -556,14 +527,13 @@ a {
 
 .event-card__title {
   font-family: var(--font-serif);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  background: var(--olive-dark);
-  display: inline-block;
-  padding: 8px 28px;
-  border-radius: 24px;
-  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #4A5D4A;
+  display: block;
+  margin-bottom: 24px;
+  text-transform: uppercase;
 }
 
 .event-card__time-label {
@@ -729,8 +699,8 @@ a {
 }
 
 .story-section__title {
-  font-family: var(--font-script);
-  font-size: 48px;
+  font-family: var(--font-title);
+  font-size: 54px;
   color: var(--olive);
   margin-bottom: 20px;
 }
@@ -749,9 +719,9 @@ a {
    CALENDAR
    =========================================== */
 .calendar-section {
-  background: linear-gradient(160deg, var(--olive) 0%, var(--olive-dark) 100%);
-  padding: 48px 24px;
-  color: var(--cream);
+  background: #fff;
+  padding: 64px 24px;
+  color: #4A5D4A;
   position: relative;
 }
 
@@ -763,8 +733,8 @@ a {
 }
 
 .calendar-section__month {
-  font-family: var(--font-script);
-  font-size: 56px;
+  font-family: var(--font-title);
+  font-size: 64px;
   position: relative;
   z-index: 1;
   margin-bottom: 16px;
@@ -974,56 +944,68 @@ a {
   text-align: center;
 }
 
+.gallery-section {
+  padding: 48px 16px;
+  background: var(--cream);
+  text-align: center;
+}
+
 .gallery-main {
-  width: 100%;
-  height: 420px;
   position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5.2;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  margin: 0 auto 24px;
 }
 
 .gallery-main img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .gallery-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.7);
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 28px;
   color: var(--olive-dark);
-  z-index: 3;
-  transition: background 0.3s;
-  backdrop-filter: blur(4px);
+  z-index: 5;
+  transition: all 0.3s cubic-bezier(.175, .885, .32, 1.275);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-nav:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .gallery-nav--prev {
-  left: 12px;
+  left: 16px;
 }
 
 .gallery-nav--next {
-  right: 12px;
+  right: 16px;
 }
 
 .gallery-thumbs {
   display: flex;
+  gap: 10px;
   overflow-x: auto;
-  gap: 4px;
-  padding: 4px;
+  padding: 10px 4px;
   scrollbar-width: none;
+  justify-content: flex-start;
 }
 
 .gallery-thumbs::-webkit-scrollbar {
@@ -1031,21 +1013,24 @@ a {
 }
 
 .gallery-thumb {
-  flex-shrink: 0;
   width: 80px;
-  height: 60px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 10px;
   object-fit: cover;
   cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.3s;
+  opacity: 0.55;
+  transition: all 0.4s cubic-bezier(.175, .885, .32, 1.275);
   border: 2px solid transparent;
 }
 
-.gallery-thumb.active,
-.gallery-thumb:hover {
+.gallery-thumb.active {
   opacity: 1;
   border-color: var(--olive);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 
 /* ===========================================
    RSVP FORM
@@ -1301,38 +1286,50 @@ select.rsvp-field {
   right: 24px;
   width: 44px;
   height: 44px;
+  background: var(--white);
   border-radius: 50%;
-  background: var(--olive);
-  color: var(--cream);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--olive);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   z-index: 100;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, background 0.3s;
+  transition: all 0.3s cubic-bezier(.175, .885, .32, 1.275);
 }
 
 .music-btn:hover {
-  transform: scale(1.08);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .music-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
-.music-btn--playing {
-  animation: musicRotate 3s linear infinite;
+.music-btn.is-rotating {
+  animation: rotateMusic 4s linear infinite;
 }
 
-@keyframes musicRotate {
-  from {
-    transform: rotate(0deg);
-  }
+@keyframes rotateMusic {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+#music-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
 }
 
 /* ===========================================
@@ -1345,8 +1342,8 @@ select.rsvp-field {
 }
 
 .footer-section__thanks {
-  font-family: var(--font-script);
-  font-size: 36px;
+  font-family: var(--font-title);
+  font-size: 48px;
   color: var(--olive);
   margin-bottom: 8px;
 }

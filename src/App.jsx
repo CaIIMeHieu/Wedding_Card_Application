@@ -38,22 +38,12 @@ export default function App() {
       },
     });
 
-    // Seal shrinks and spins away
-    tl.to('.ec-seal', {
-      scale: 0, rotation: 360, opacity: 0,
-      duration: 0.5, ease: 'back.in(2)',
-    })
-    .to('.ec-floral-tl', { x: -100, opacity: 0, duration: 0.4 }, '-=0.3')
-    .to('.ec-floral-br', { x: 100, opacity: 0, duration: 0.4 }, '-=0.4')
-    .to('.ec-envelope__flap', {
-      rotateX: 180, opacity: 0, duration: 0.5, ease: 'power2.inOut',
-    }, '-=0.2')
-    .to(['.ec-envelope__flap-line-l', '.ec-envelope__flap-line-r'], {
-      opacity: 0, duration: 0.3,
-    }, '-=0.4')
-    .to('.envelope-cover', {
-      y: '-100vh', opacity: 0, duration: 0.8, ease: 'power3.inOut',
-    }, '-=0.1');
+    // Match the simple slide up animation
+    tl.to('.envelope-cover', {
+      y: '-100%',
+      duration: 1.2,
+      ease: 'power3.inOut',
+    });
   }, []);
 
   /* ---- Scroll Animations for Content ---- */
@@ -266,7 +256,7 @@ export default function App() {
       )}
 
       {/* Floating Music Player */}
-      <MusicPlayer visible={phase === 'content'} />
+      <MusicPlayer visible={phase === 'content'} autoPlay={phase === 'content'} />
 
       {/* Gift Modal */}
       <GiftModal isOpen={giftOpen} onClose={() => setGiftOpen(false)} />

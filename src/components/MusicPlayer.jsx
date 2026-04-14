@@ -1,24 +1,25 @@
 import { useState, useRef, useEffect } from 'react';
 
-export default function MusicPlayer({ visible }) {
+export default function MusicPlayer({ visible, autoPlay }) {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
     // Create audio element
     audioRef.current = new Audio();
-    // Try loading a royalty-free track; fallback silently
-    audioRef.current.src = '/audio/music.mp3';
+    audioRef.current.src = 'https://www.mboxdrive.com/john-legend-all-of-me-instrumental-1280.mp3';
     audioRef.current.loop = true;
     audioRef.current.volume = 0.4;
     return () => { if (audioRef.current) { audioRef.current.pause(); } };
   }, []);
 
   useEffect(() => {
-    if (visible && audioRef.current) {
-      audioRef.current.play().then(() => setPlaying(true)).catch(() => {});
+    if (autoPlay && audioRef.current && !playing) {
+      audioRef.current.play().then(() => setPlaying(true)).catch(err => {
+        console.warn('Playback failed:', err);
+      });
     }
-  }, [visible]);
+  }, [autoPlay, playing]);
 
   const toggle = () => {
     if (!audioRef.current) return;
@@ -33,7 +34,7 @@ export default function MusicPlayer({ visible }) {
   if (!visible) return null;
 
   return (
-    <button className={`music-btn ${playing ? 'music-btn--playing' : ''}`} onClick={toggle} aria-label="Toggle music" id="music-toggle">
+    <button className={`music-btn ${playing ? 'music-btn--playing is-rotating' : ''}`} onClick={toggle} aria-label="Toggle music" id="music-toggle">
       {playing ? (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />

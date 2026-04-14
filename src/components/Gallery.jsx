@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { weddingData } from '../config/weddingData';
 
 export default function Gallery() {
@@ -7,6 +7,11 @@ export default function Gallery() {
 
   const prev = () => setCurrent(i => (i === 0 ? gallery.length - 1 : i - 1));
   const next = () => setCurrent(i => (i === gallery.length - 1 ? 0 : i + 1));
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
 
   return (
     <section className="gallery-section" id="gallery">

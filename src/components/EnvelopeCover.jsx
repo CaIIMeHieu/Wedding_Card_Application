@@ -9,41 +9,26 @@ export default function EnvelopeCover({ onOpen }) {
   /* ---- GSAP Entrance Animation ---- */
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out', opacity: 0 } });
 
-      // 1. Background paper fades in
-      tl.fromTo('.envelope-cover', { opacity: 0 }, { opacity: 1, duration: 0.6 })
-        // 2. Title text drops down
-        .fromTo('.ec-title', { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.3)
-        // 3. Line draws from center
-        .fromTo('.ec-line', { scaleX: 0 }, { scaleX: 1, duration: 0.5 }, 0.6)
-        // 4. Guest name types in
-        .fromTo('.ec-guest', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6 }, 0.7)
-        // 5. Envelope slides up
-        .fromTo('.ec-envelope-wrap', { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.4)' }, 0.8)
-        // 6. Floral top-left flies in
-        .fromTo('.ec-floral-tl', { x: -60, y: -40, opacity: 0, scale: 0.7 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.2)' }, 1.0)
-        // 7. Floral bottom-right flies in
-        .fromTo('.ec-floral-br', { x: 60, y: 40, opacity: 0, scale: 0.7 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.2)' }, 1.1)
-        // 8. Wax seal pops in with bounce
-        .fromTo('.ec-seal', { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2.5)' }, 1.3)
-        // 9. Date fades up
-        .fromTo('.ec-date', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 1.5)
-        // 10. Hint bounces in
-        .fromTo('.ec-hint', { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.8);
+      // Match the staggered fadeInUp from original
+      tl.fromTo('.ec-title', { y: 20 }, { y: 0, opacity: 1, duration: 1 }, 0)
+        .fromTo('.ec-guest', { y: 20 }, { y: 0, opacity: 1, duration: 1 }, 0.2)
+        .fromTo('.ec-line', { scaleX: 0 }, { scaleX: 1, opacity: 0.5, duration: 1 }, 0.4)
+        .fromTo('.ec-envelope', { y: 30 }, { y: 0, opacity: 1, duration: 1.2 }, 1.0)
+        .fromTo('.ec-seal', { scale: 0.5 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' }, 1.3)
+        .fromTo('.ec-floral-tl', { y: 20 }, { y: 0, opacity: 1, duration: 1 }, 1.5)
+        .fromTo('.ec-floral-br', { y: 20 }, { y: 0, opacity: 1, duration: 1 }, 1.6)
+        .fromTo('.ec-date', { y: 20 }, { y: 0, opacity: 1, duration: 1 }, 1.8)
+        .fromTo('.ec-hint', { y: 10 }, { y: 0, opacity: 1, duration: 0.8 }, 2.2);
 
-      // Continuous float on floral elements
-      gsap.to('.ec-floral-tl', { y: -6, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-      gsap.to('.ec-floral-br', { y: 6, duration: 3.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.5 });
-
-      // Seal glow pulse
+      // Wax seal pulse animation (as observed)
       gsap.to('.ec-seal', {
-        filter: 'drop-shadow(0 0 12px rgba(81,93,62,0.4))',
-        duration: 1.5,
+        scale: 1.05,
+        duration: 0.8,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
-        delay: 2,
       });
 
     }, containerRef);
@@ -53,15 +38,8 @@ export default function EnvelopeCover({ onOpen }) {
 
   return (
     <div className="envelope-cover" ref={containerRef} id="envelope-cover">
-      {/* Subtle floating particles */}
-      <div className="ec-particles">
-        {[...Array(6)].map((_, i) => (
-          <span key={i} className="ec-particle" style={{ '--i': i }} />
-        ))}
-      </div>
-
-      <p className="ec-title">Trân trọng kính mời:</p>
-
+      <p className="ec-title">TRÂN TRỌNG KÍNH MỜI</p>
+      
       {guestName && (
         <p className="ec-guest">{decodeURIComponent(guestName)}</p>
       )}
@@ -69,27 +47,38 @@ export default function EnvelopeCover({ onOpen }) {
       <div className="ec-line" />
 
       <div className="ec-envelope-wrap" onClick={onOpen} role="button" tabIndex={0} aria-label="Mở thiệp cưới">
-        {/* Floral decorations positioned around envelope */}
-        <img src="/images/floral-tl.png" alt="" className="ec-floral ec-floral-tl" draggable="false" />
-        <img src="/images/floral-br.png" alt="" className="ec-floral ec-floral-br" draggable="false" />
+        {/* Envelope Body (Image) */}
+        <div className="ec-envelope" />
 
-        {/* Envelope body */}
-        <div className="ec-envelope">
-          <div className="ec-envelope__flap" />
-          <div className="ec-envelope__body" />
-          <div className="ec-envelope__flap-line-l" />
-          <div className="ec-envelope__flap-line-r" />
-        </div>
+        {/* Wax Seal (Image) */}
+        <img 
+          src="https://w.ladicdn.com/s400x400/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0030_4-20251010171938-qfleq.png" 
+          alt="Mở thiệp" 
+          className="ec-seal" 
+          draggable="false" 
+        />
 
-        {/* Wax Seal */}
-        <img src="/images/wax-seal.png" alt="Mở thiệp" className="ec-seal" draggable="false" />
+        {/* Floral decorations exactly as positioned in CSS */}
+        <img 
+          src="https://w.ladicdn.com/s450x500/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0028_6-20251010171938-olp-t.png" 
+          alt="" 
+          className="ec-floral ec-floral-tl" 
+          draggable="false" 
+        />
+        <img 
+          src="https://w.ladicdn.com/s500x650/6322a62f2dad980013bb5005/thiep-thanh-dat-element_0029_5-20251010171938-3wx4g.png" 
+          alt="" 
+          className="ec-floral ec-floral-br" 
+          draggable="false" 
+        />
       </div>
 
-      <p className="ec-date">{weddingData.weddingDateDisplay}</p>
-      <p className="ec-hint">
+      <p className="ec-date">12.03.2026</p>
+      
+      <div className="ec-hint">
         <span className="ec-hint__icon">▼</span>
         Nhấn vào thiệp để mở
-      </p>
+      </div>
     </div>
   );
 }
