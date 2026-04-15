@@ -14,14 +14,14 @@ export default function WeddingCalendar() {
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
 
   return (
-    <section className="calendar-section" id="calendar">
+    <section className="calendar-section section" id="calendar">
       <h2 className="calendar-section__month">{monthNames[weddingMonth]}</h2>
       <div className="calendar-grid">
         {dayHeaders.map(d => (
           <div className="calendar-grid__header" key={d}>{d}</div>
         ))}
         {cells.map((day, i) => (
-          <div key={i} className={`calendar-grid__day ${day === weddingDay ? 'calendar-grid__day--highlight' : ''}`}>
+          <div key={i} className={`calendar-grid__day ${day === weddingDay ? 'calendar-highlight' : ''}`}>
             {day || ''}
           </div>
         ))}

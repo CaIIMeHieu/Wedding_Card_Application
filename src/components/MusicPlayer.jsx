@@ -7,7 +7,7 @@ export default function MusicPlayer({ visible, autoPlay }) {
   useEffect(() => {
     // Create audio element
     audioRef.current = new Audio();
-    audioRef.current.src = 'https://www.mboxdrive.com/john-legend-all-of-me-instrumental-1280.mp3';
+    audioRef.current.src = 'https://camcui.vn/bai103.mp3';
     audioRef.current.loop = true;
     audioRef.current.volume = 0.4;
     return () => { if (audioRef.current) { audioRef.current.pause(); } };

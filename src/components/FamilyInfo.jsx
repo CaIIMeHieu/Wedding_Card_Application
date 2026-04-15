@@ -21,9 +21,9 @@ export default function FamilyInfo() {
       <p className="family-section__invitation">{content.invitation}</p>
 
       <div className="couple-names">
-        <p className="couple-names__groom">{groom.firstName}</p>
+        <p className="couple-names__groom">{groom.fullName}</p>
         <span className="couple-names__and">&amp;</span>
-        <p className="couple-names__bride">{bride.firstName}</p>
+        <p className="couple-names__bride">{bride.fullName}</p>
       </div>
     </section>
   );
